@@ -4,242 +4,235 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>GloryGlam — Beauty • Fashion • Lifestyle</title>  <!-- Fonts & icons -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="" crossorigin="anonymous">  <style>
-    :root{
-      --accent:#d63384; --accent-2:#ff6fa3; --muted:#6b6b6b; --bg:#fbf8f9; --card:#fff; --glass:rgba(255,255,255,0.06);
-      --radius:14px; --container:1200px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;color:#222;background:var(--bg);-webkit-font-smoothing:antialiased}
+  <title>GloryGlam — Beauty • Fashion • Lifestyle</title>  <!-- Google Fonts (two fonts: Playfair Display & Poppins) -->  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">  <!-- Bootstrap 5 -->  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <style>
+    :root{--accent:#d63384;--accent-2:#ff6fa3;--muted:#6b6b6b;--bg:#fbf8f9;--card:#fff}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;background:var(--bg);color:#222}
+    h1,h2,h3{font-family:'Playfair Display',serif}
 
-    /* LAYOUT */
-    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
-    header, section, footer{padding:60px 0}
+    /* Floating pill nav */
+    .nav-pill{position:fixed;right:18px;top:18px;z-index:1100;border-radius:999px;backdrop-filter:blur(6px);box-shadow:0 8px 30px rgba(3,3,3,.12)}
 
-    /* NAV */
-    nav{position:fixed;inset:18px 24px auto auto;z-index:1400;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));backdrop-filter:blur(6px);padding:10px 16px;border-radius:999px;box-shadow:0 10px 30px rgba(2,6,23,0.12)}
-    .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:#111}
-    .brand .logo{font-family:'Dancing Script';font-size:1.25rem;color:var(--accent)}
-    .nav-links{display:flex;gap:14px;align-items:center}
-    .nav-links a{color:#222;text-decoration:none;font-weight:500;padding:8px 12px;border-radius:10px;transition:all .18s}
-    .nav-links a:hover{background:rgba(0,0,0,0.04);transform:translateY(-2px)}
+    /* Hero */
+    .hero{min-height:78vh;display:flex;align-items:center;background:linear-gradient(180deg,rgba(0,0,0,.32),rgba(0,0,0,.08)),url('https://loremflickr.com/1600/900/beauty,portrait') center/cover no-repeat;color:#fff}
+    .glass{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border-radius:18px;padding:28px;backdrop-filter:blur(6px);box-shadow:0 8px 40px rgba(3,3,3,.45)}
+    .btn-accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#fff}
 
-    /* Floating actions */
-    .fab{position:fixed;right:18px;bottom:18px;width:64px;height:64px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 18px 40px rgba(214,51,132,.22);border:none}
+    /* Cards & gallery */
+    .service-card{border-radius:14px;background:var(--card);overflow:hidden;border:none;transition:transform .35s,box-shadow .35s}
+    .service-card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(13,13,13,.08)}
+    .service-thumb{height:220px;object-fit:cover}
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 
-    /* HERO */
-    .hero{min-height:78vh;display:grid;grid-template-columns:1fr 440px;gap:40px;align-items:center;padding-top:40px}
-    .hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.02;margin:0}
-    .hero-sub{margin-top:14px;color:var(--muted);font-size:1.05rem}
-    .cta-row{margin-top:22px;display:flex;gap:12px;align-items:center}
-    .btn{padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:600}
-    .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 30px rgba(214,51,132,.18)}
-    .btn-ghost{background:transparent;border:1px solid rgba(25,25,25,.06)}
+    /* Contact */
+    .contact-card{border-radius:14px}
 
-    .hero-right{place-self:center end}
-    .hero-visual{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(7,10,25,.12);transform:translateZ(0)}
-    .hero-visual img{display:block;width:100%;height:100%;object-fit:cover}
-
-    /* GLASS FEATURE */
-    .feature{background:linear-gradient(135deg,var(--glass),rgba(255,255,255,0.03));padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.02)}
-
-    /* SERVICES */
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-    .card{background:var(--card);border-radius:14px;padding:0;overflow:hidden;transition:transform .36s,box-shadow .36s}
-    .card:hover{transform:translateY(-8px);box-shadow:0 18px 60px rgba(3,6,26,.08)}
-    .card .thumb{height:220px;display:block;width:100%;object-fit:cover}
-    .card .body{padding:16px}
-
-    /* GALLERY */
-    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .gallery img{width:100%;height:220px;object-fit:cover;border-radius:12px;display:block;transition:transform .35s}
-    .gallery img:hover{transform:scale(1.04)}
-
-    /* PORTFOLIO */
-    .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-
-    /* CONTACT */
-    .contact-wrap{display:grid;grid-template-columns:360px 1fr;gap:20px}
-    .contact-panel{background:var(--card);padding:22px;border-radius:12px}
-    .contact-panel h4{margin:0 0 8px 0}
-    .contact-form{background:var(--card);padding:22px;border-radius:12px}
-    .form-row{display:flex;gap:12px}
-    .form-control{width:100%;padding:10px;border-radius:8px;border:1px solid #ececec}
-
-    /* FOOTER */
     footer{background:#0b0b0b;color:#d6d6d6;padding:28px 0}
-    .footer-grid{display:flex;justify-content:space-between;align-items:center;gap:12px}
 
-    /* ANIMATIONS */
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.9,.25,1)}
-    .reveal.visible{opacity:1;transform:none}
-
-    /* RESPONSIVE */
-    @media (max-width:1024px){.hero{grid-template-columns:1fr 360px}.services-grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:1fr}}
-    @media (max-width:640px){nav{left:12px;right:12px} .hero{grid-template-columns:1fr;gap:18px;padding-top:18px}.hero-right{order:-1}.services-grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr}}
-
+    @media (max-width:991px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:575px){.hero{min-height:64vh}.gallery-grid{grid-template-columns:repeat(1,1fr)}}
   </style></head>
-<body>  <!-- floating nav (compact pill) -->  <nav aria-label="Primary">
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <a href="#home" class="brand" aria-label="GloryGlam home">
-        <span class="logo cursive">GloryGlam</span>
-        <span style="font-size:.85rem;color:var(--muted);">Beauty • Fashion • Lifestyle</span>
-      </a>
-      <div class="nav-links" role="navigation">
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
-        <a href="resume.html">Resume</a>
-      </div>
+<body><!-- NAV pill --><nav class="nav-pill bg-white p-2">
+  <div class="d-flex align-items-center gap-3 px-3">
+    <a class="navbar-brand cursive text-decoration-none" href="#" style="font-family:'Playfair Display',serif;color:var(--accent);font-size:1.25rem">GloryGlam</a>
+    <div class="d-none d-md-flex align-items-center gap-2">
+      <a class="text-muted text-decoration-none" href="#services">Services</a>
+      <a class="text-muted text-decoration-none" href="#gallery">Gallery</a>
+      <a class="text-muted text-decoration-none" href="#portfolio">Portfolio</a>
+      <a class="text-muted text-decoration-none" href="#hire">Hire</a>
+      <a class="text-muted text-decoration-none" href="#contact">Contact</a>
     </div>
-  </nav>  <!-- HERO -->  <header class="container hero" id="home">
-    <div class="hero-left">
-      <div class="feature reveal visible" style="max-width:520px">
-        <div style="flex:1">
-          <h1>Where beauty meets timeless elegance</h1>
-          <p class="hero-sub">Premium makeup, styling and lifestyle curation — crafted with care for editorial & bridal moments.</p>
-          <div class="cta-row">
-            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book a consultation</button>
-            <button class="btn btn-ghost" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore services</button>
+    <div class="ms-2 d-none d-md-block">
+      <a class="btn btn-sm btn-outline-secondary" href="resume.html">Resume</a>
+    </div>
+  </div>
+</nav><!-- HERO --><header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 text-white">
+        <div class="glass">
+          <h1 class="display-4 fw-bold">Where Beauty Meets Timeless Elegance</h1>
+          <p class="lead mt-3">Premium makeup, styling and lifestyle curation — crafted for editorial and bridal moments.</p>
+          <div class="mt-4 d-flex gap-3">
+            <a href="#hire" class="btn btn-accent btn-lg px-4">Hire Me</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg px-4">Message on WhatsApp</a>
           </div>
-          <div style="display:flex;gap:12px;align-items:center;margin-top:16px">
-            <img src="https://loremflickr.com/800/800/beauty,glamour" alt="trusted" style="width:52px;height:52px;border-radius:50%;object-fit:cover">
-            <div style="font-size:.92rem;color:var(--muted)"><div style="font-weight:700;color:#111">Trusted by 1500+ brides & creatives</div><small>Experienced founder & in-house teams</small></div>
+          <div class="d-flex gap-3 align-items-center mt-4">
+            <img src="https://loremflickr.com/80/80/makeup,brush" alt="mini" class="rounded-circle me-2" style="width:48px;height:48px;object-fit:cover">
+            <div>
+              <small class="d-block text-muted">Trusted by</small>
+              <strong>1500+ brides & creatives</strong>
+            </div>
           </div>
         </div>
       </div>
-    </div><div class="hero-right">
-  <div class="hero-visual" aria-hidden="true">
-    <picture>
-      <source srcset="https://loremflickr.com/800/800/beauty,glamour" sizes="(max-width:640px) 90vw, 440px">
-      <img src="https://loremflickr.com/800/800/beauty,glamour" alt="Glamour hero image">
-    </picture>
-  </div>
-</div>
-
-  </header>  <!-- SERVICES -->  <section id="services">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display';margin-bottom:8px">Our Premium Services</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:18px">HD makeup, on-location bridal teams, styling for shoots, skincare and brand packages.</p><div class="services-grid">
-    <article class="card reveal visible">
-      <img class="thumb" src="https://loremflickr.com/800/800/beauty,glamour" alt="Bridal makeup">
-      <div class="body">
-        <h4 style="margin:0 0 6px 0">Bridal & Event Makeup</h4>
-        <p style="margin:0;color:var(--muted)">Airbrush, HD and trial sessions with on-site teams for large events.</p>
-      </div>
-    </article>
-
-    <article class="card reveal visible">
-      <img class="thumb" src="https://loremflickr.com/800/800/beauty,glamour" alt="Fashion styling">
-      <div class="body">
-        <h4 style="margin:0 0 6px 0">Fashion Styling & Wardrobe</h4>
-        <p style="margin:0;color:var(--muted)">Closet edits, personal shopping and editorial direction for campaigns.</p>
-      </div>
-    </article>
-
-    <article class="card reveal visible">
-      <img class="thumb" src="https://loremflickr.com/800/800/beauty,glamour" alt="Skincare treatments">
-      <div class="body">
-        <h4 style="margin:0 0 6px 0">Skin Glow Treatments</h4>
-        <p style="margin:0;color:var(--muted)">Pre-bridal plans, glow facials and bespoke dermal advice.</p>
-      </div>
-    </article>
-
-  </div>
-
-</div>
-
-  </section>  <!-- GALLERY -->  <section id="gallery" style="background:linear-gradient(180deg,transparent,rgba(0,0,0,0.01));padding-top:40px;padding-bottom:40px">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display';margin-bottom:8px">Gallery</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:18px">A curated selection of shoots, bridal looks and creative styling.</p><div class="gallery">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 1">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 2">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 3">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 4">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 5">
-    <img src="https://loremflickr.com/800/800/beauty,glamour" alt="gallery 6">
-  </div>
-</div>
-
-  </section>  <!-- PORTFOLIO -->  <section id="portfolio">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display';margin-bottom:8px">Portfolio Highlights</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:18px">Editorial direction, model portfolios and campaign imagery.</p><div class="portfolio-grid">
-    <div style="border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(3,6,26,.06)"><img src="https://loremflickr.com/800/800/beauty,glamour" alt="portfolio large" style="width:100%;height:100%;object-fit:cover"></div>
-    <div style="display:grid;grid-template-rows:1fr 1fr;gap:12px">
-      <img src="https://loremflickr.com/800/800/beauty,glamour" alt="p2" style="width:100%;height:100%;object-fit:cover;border-radius:12px">
-      <img src="https://loremflickr.com/800/800/beauty,glamour" alt="p3" style="width:100%;height:100%;object-fit:cover;border-radius:12px">
-    </div>
-  </div>
-
-</div>
-
-  </section>  <!-- CONTACT -->  <section id="contact">
-    <div class="container">
-      <h2 style="font-family:'Playfair Display';margin-bottom:8px">Contact & Bookings</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:18px">We aim to respond within 24–48 hours. For urgent bookings use WhatsApp.</p><div class="contact-wrap">
-    <aside class="contact-panel" aria-labelledby="contact-heading">
-      <h4 id="contact-heading">Get in touch</h4>
-      <p style="color:var(--muted)">Founder: <strong>Prithi Panthal</strong></p>
-      <p style="color:var(--muted)"><i class="fa-solid fa-phone"></i> WhatsApp: <a href="https://wa.me/917798348793" style="color:var(--accent);text-decoration:none">+91 77983 48793</a></p>
-      <p style="color:var(--muted)"><i class="fa-solid fa-envelope"></i> <a href="mailto:dpanthalprithi@gmail.com" style="color:var(--accent);text-decoration:none">dpanthalprithi@gmail.com</a></p>
-      <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="window.open('https://wa.me/917798348793','_blank')">Message on WhatsApp</button>
-    </aside>
-
-    <form class="contact-form" onsubmit="event.preventDefault();handleContact(event)">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-        <input id="name" class="form-control" required placeholder="Your name">
-        <input id="email" class="form-control" required type="email" placeholder="Email">
-      </div>
-      <textarea id="message" class="form-control" rows="6" required placeholder="How can we help?"></textarea>
-      <div style="display:flex;gap:10px;margin-top:12px">
-        <button type="submit" class="btn btn-primary">Send message</button>
-        <button type="reset" class="btn btn-ghost">Reset</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-  </section>  <!-- HIRE ME -->  <section id="hire" style="padding:60px 0;background:linear-gradient(135deg, rgba(214,51,132,0.06), rgba(255,255,255,0.15));">
-    <div class="container" style="text-align:center;max-width:760px">
-      <h2 style="font-family:'Playfair Display';margin-bottom:8px">Hire Me</h2>
-      <p style="color:var(--muted);margin-top:0;margin-bottom:26px;font-size:1.05rem">Available for bridal bookings, editorial shoots, brand collaborations, and personal styling projects. Let’s create something beautiful together.</p>
-      <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
-        <button class="btn btn-primary" onclick="window.open('https://wa.me/917798348793','_blank')">Book via WhatsApp</button>
-        <button class="btn btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Send an Email</button>
+      <div class="col-lg-5 d-none d-lg-block text-end">
+        <div class="position-relative" style="max-width:360px;margin-left:auto">
+          <img src="https://loremflickr.com/600/800/beauty,model,glamour" alt="Hero" class="img-fluid rounded-4 shadow-lg">
+          <div class="position-absolute" style="right:-20px;bottom:-20px;transform:rotate(-8deg)">
+            <img src="https://loremflickr.com/260/360/hair,style" alt="side" class="img-fluid rounded-4 shadow" style="width:220px;">
+          </div>
+        </div>
       </div>
     </div>
-  </section>$&
-
-  <footer>
-    <div class="container footer-grid">
-      <div>
-        <strong style="color:#fff">GloryGlam</strong>
-        <div style="color:var(--muted)">Beauty • Fashion • Lifestyle</div>
+  </div>
+</header><!-- SERVICES --><section id="services" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-3">Our Premium Services</h2>
+    <p class="text-muted mb-4">HD makeup, on-location bridal teams, styling for shoots, skincare and brand packages.</p><div class="row g-4">
+  <div class="col-md-6 col-lg-4">
+    <article class="service-card shadow-sm h-100">
+      <img class="service-thumb w-100" src="https://loremflickr.com/900/600/bridal,makeup" alt="Bridal Makeup">
+      <div class="p-3">
+        <h5 class="fw-bold">Bridal & Event Makeup</h5>
+        <p class="mb-2 text-muted">HD & airbrush makeup, trial sessions, on-location bridal teams and custom looks.</p>
+        <a href="#contact" class="text-decoration-none">Book trial <i class="fa-solid fa-arrow-right ms-2"></i></a>
       </div>
-      <div style="color:var(--muted)">© 2025 GloryGlam. All rights reserved.</div>
+    </article>
+  </div>
+
+  <div class="col-md-6 col-lg-4">
+    <article class="service-card shadow-sm h-100">
+      <img class="service-thumb w-100" src="https://loremflickr.com/900/600/fashion,stylist" alt="Fashion Styling">
+      <div class="p-3">
+        <h5 class="fw-bold">Fashion Styling & Wardrobe</h5>
+        <p class="mb-2 text-muted">Closet edits, personal shopping, editorial styling for campaigns and shoots.</p>
+        <a href="#contact" class="text-decoration-none">Start styling <i class="fa-solid fa-arrow-right ms-2"></i></a>
+      </div>
+    </article>
+  </div>
+
+  <div class="col-md-6 col-lg-4">
+    <article class="service-card shadow-sm h-100">
+      <img class="service-thumb w-100" src="https://loremflickr.com/900/600/skincare,facial" alt="Skin Treatments">
+      <div class="p-3">
+        <h5 class="fw-bold">Skin Glow Treatments</h5>
+        <p class="mb-2 text-muted">Pre-bridal skincare, glow facials and customized dermal plans.</p>
+        <a href="#contact" class="text-decoration-none">Get glowing <i class="fa-solid fa-arrow-right ms-2"></i></a>
+      </div>
+    </article>
+  </div>
+
+</div>
+
+  </div>
+</section><!-- GALLERY --><section id="gallery" class="bg-light py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>Gallery</h2>
+      <p class="text-muted">A curated selection of recent shoots, bridal looks and creative styling.</p>
+    </div><div class="gallery-grid">
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/makeup,closeup" alt="g1"></div>
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/fashion,editorial" alt="g2"></div>
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/bridal,portrait" alt="g3"></div>
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/hair,updo" alt="g4"></div>
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/skincare,spa" alt="g5"></div>
+  <div class="gallery-item"><img src="https://loremflickr.com/800/800/studio,shoot" alt="g6"></div>
+</div>
+
+  </div>
+</section><!-- PORTFOLIO --><section id="portfolio" class="py-5">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2>Portfolio Highlights</h2>
+      <p class="text-muted">Editorial direction, model portfolios and campaign imagery.</p>
+    </div><div class="row g-4 align-items-center">
+  <div class="col-lg-6">
+    <div class="portfolio-hero shadow-sm parallax">
+      <img src="https://loremflickr.com/1100/700/model,editorial" class="img-fluid rounded" alt="portfolio1">
     </div>
-  </footer>  <!-- FAB WhatsApp --><button class="fab" title="WhatsApp" aria-label="Message on WhatsApp" onclick="window.open('https://wa.me/917798348793','_blank')"><i class="fab fa-whatsapp" style="font-size:20px"></i></button>
+  </div>
+  <div class="col-lg-6">
+    <div class="row g-3">
+      <div class="col-6"><img src="https://loremflickr.com/540/360/fashion,shoot" class="img-fluid rounded" alt="p2"></div>
+      <div class="col-6"><img src="https://loremflickr.com/540/360/beauty,closeup" class="img-fluid rounded" alt="p3"></div>
+      <div class="col-12 mt-3"><img src="https://loremflickr.com/1100/400/styling,editorial" class="img-fluid rounded" alt="p4"></div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    // small helper to open mailto fallback
-    function handleContact(e){
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const message = document.getElementById('message').value.trim();
-      if(!name||!email||!message) return alert('Please complete the form');
-      const subject = encodeURIComponent('Website enquiry from '+name);
-      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-      window.location.href = `mailto:dpanthalprithi@gmail.com?subject=${subject}&body=${body}`;
-    }
+  </div>
+</section><!-- HIRE ME --><section id="hire" class="py-5" style="background:linear-gradient(135deg, rgba(214,51,132,0.06), rgba(255,255,255,0.12));">
+  <div class="container text-center">
+    <h2>Hire Me</h2>
+    <p class="text-muted">Available for bridal bookings, editorial shoots, brand collaborations, and personal styling projects.</p>
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <a href="https://wa.me/917798348793" class="btn btn-accent btn-lg">Book via WhatsApp</a>
+      <a href="#contact" class="btn btn-outline-secondary btn-lg">Contact</a>
+    </div>
+  </div>
+</section><!-- CONTACT --><section id="contact" class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card contact-card shadow-sm p-4">
+          <div class="row g-0 align-items-center">
+            <div class="col-md-5 p-4 border-end">
+              <h4 class="fw-bold">Contact & Bookings</h4>
+              <p class="text-muted mb-3">We respond within 24–48 hours for enquiries. For urgent WhatsApp booking use the button below.</p><ul class="list-unstyled small text-muted">
+            <li><i class="fa-solid fa-user me-2 text-muted"></i><strong>Founder:</strong> Prithi Panthal</li>
+            <li class="mt-2"><i class="fa-solid fa-phone me-2 text-muted"></i><strong>WhatsApp:</strong> <a href="https://wa.me/917798348793" class="text-decoration-none">+91 77983 48793</a></li>
+            <li class="mt-2"><i class="fa-solid fa-envelope me-2 text-muted"></i><strong>Email:</strong> <span class="text-muted">dpanthalprithi@gmail.com</span></li>
+          </ul>
 
-    // Simple reveal on load
-    document.addEventListener('DOMContentLoaded',()=>{
-      document.querySelectorAll('.reveal').forEach((el,i)=>setTimeout(()=>el.classList.add('visible'),120*i));
-    });
-  </script></body>
-</html>
+          <a class="btn btn-success mt-3 w-100" href="https://wa.me/917798348793"><i class="fab fa-whatsapp me-2"></i>Message on WhatsApp</a>
+        </div>
+
+        <div class="col-md-7 p-4">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label class="form-label">Your name</label>
+              <input id="name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input id="email" type="email" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Message</label>
+              <textarea id="message" rows="4" class="form-control" required></textarea>
+            </div>
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-accent">Send via WhatsApp</button>
+              <button type="reset" class="btn btn-outline-secondary">Reset</button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section><!-- FOOTER --><footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div class="mb-3 mb-md-0">
+      <strong class="text-white">GloryGlam</strong>
+      <div class="small text-muted">Beauty • Fashion • Lifestyle</div>
+    </div>
+    <div class="small text-muted">© 2025 GloryGlam. All rights reserved.</div>
+  </div>
+</footer><!-- SCRIPTS --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script><script>
+  // Contact form -> open WhatsApp with prefilled message
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if(!name || !email || !message){alert('Please fill all fields');return}
+    const text = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+${message}`);
+    window.open(`https://wa.me/917798348793?text=${text}`,'_blank');
+  });
+
+  // Intersection Observer for subtle reveal animations
+  (function(){
+    const obs = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target)}})},{threshold:0.12});
+    document.querySelectorAll('.service-card, .gallery-item, .portfolio-hero, .glass').forEach(el=>obs.observe(el));
+  })();
+</script></body>
+        </html>
