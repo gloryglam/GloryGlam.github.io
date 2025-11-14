@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GloryGlam — Beauty • Fashion • Lifestyle</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{--accent:#d63384;--muted:#6b6b6b;--bg:#fbf8f9;--card:#fff}
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:#222;scroll-behavior:smooth}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif}
+    .cursive{font-family:'Dancing Script',cursive}
+
+    /* NAV */
+    .navbar-brand{font-family:'Dancing Script',cursive;font-size:1.8rem}
+    .nav-link{position:relative}
+    .nav-link::after{content:'';position:absolute;left:0;bottom:-8px;width:0;height:3px;background:var(--accent);border-radius:3px;transition:width .35s}
+    .nav-link:hover::after{width:100%}
+    .nav-floating{position:fixed;right:18px;bottom:18px;z-index:1100;border-radius:50%;box-shadow:0 8px 30px rgba(0,0,0,.16)}
+
+    /* HERO */
+    .hero{min-height:86vh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(0,0,0,.45),rgba(0,0,0,.25)),url('https://source.unsplash.com/1600x900/?beauty,fashion,portrait') center/cover no-repeat;color:#fff}
+    .glass{background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border-radius:18px;padding:28px;backdrop-filter:blur(6px);box-shadow:0 8px 40px rgba(3,3,3,.45)}
+    .btn-accent{background:var(--accent);border:none}
+
+    /* ANIMATIONS */
+    .anim{opacity:0;transform:translateY(18px);transition:opacity .65s ease, transform .65s cubic-bezier(.2,.9,.25,1)}
+    .anim.in-view{opacity:1;transform:none}
+    .anim-pop{opacity:0;transform:scale(.96);transition:opacity .6s ease, transform .6s cubic-bezier(.2,.9,.25,1)}
+    .anim-pop.in-view{opacity:1;transform:scale(1)}
+    .pulse{animation:pulse 2.4s infinite}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(214,51,132,.28)}50%{box-shadow:0 0 0 12px rgba(214,51,132,0)}100%{box-shadow:0 0 0 0 rgba(214,51,132,0)}}
+
+    /* SERVICES */
+    .service-card{border-radius:14px;background:var(--card);overflow:hidden;border:none;transition:transform .35s, box-shadow .35s}
+    .service-card:hover{transform:translateY(-10px);box-shadow:0 18px 50px rgba(13,13,13,.12)}
+    .service-thumb{height:220px;object-fit:cover}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .gallery-item{border-radius:12px;overflow:hidden}
+    .gallery-item img{width:100%;display:block;height:100%;object-fit:cover;transition:transform .35s}
+    .gallery-item:hover img{transform:scale(1.06)}
+
+    /* PORTFOLIO */
+    .parallax{transition:transform .6s cubic-bezier(.2,.9,.25,1)}
+    .portfolio-hero{border-radius:14px;overflow:hidden}
+
+    /* CONTACT */
+    .contact-card{border-radius:14px}
+
+    /* FOOTER */
+    footer{background:#0b0b0b;color:#cfcfcf;padding:28px 0}
+
+    @media (max-width:991px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:575px){.hero{min-height:76vh}.gallery-grid{grid-template-columns:repeat(1,1fr)}}
+
+    /* small helpers */
+    .fade-delay-1{transition-delay:.08s}
+    .fade-delay-2{transition-delay:.16s}
+    .fade-delay-3{transition-delay:.24s}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100" aria-label="Main navigation">
+  <div class="container">
+    <a class="navbar-brand text-white" href="#">GloryGlam</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- floating whatsapp -->
+<a href="#" id="floatWA" class="btn btn-success nav-floating pulse" title="WhatsApp" aria-label="WhatsApp" style="width:64px;height:64px;display:flex;align-items:center;justify-content:center">
+  <i class="fab fa-whatsapp" style="font-size:22px;color:#fff"></i>
+</a>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 text-white">
+        <div class="glass anim fade-delay-1" data-anim>
+          <h1 class="display-4 fw-bold">Where Beauty Meets Timeless Elegance</h1>
+          <p class="lead mt-3">Premium makeup, styling and lifestyle curation — animated throughout for a richer, living experience.</p>
+          <div class="mt-4">
+            <a href="#services" class="btn btn-accent btn-lg me-3 px-4 pulse">Explore Services</a>
+            <a href="#contact" class="btn btn-outline-light btn-lg px-4">Book a Consultation</a>
+          </div>
+          <div class="d-flex gap-3 align-items-center mt-4">
+            <div class="d-flex align-items-center">
+              <img src="https://source.unsplash.com/80x80/?makeup,brush" alt="mini" class="rounded-circle me-2" style="width:48px;height:48px;object-fit:cover">
+              <div>
+                <small class="d-block text-muted">Trusted by</small>
+                <strong>1500+ brides & creatives</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5 d-none d-lg-block text-end">
+        <div class="position-relative" style="max-width:360px;margin-left:auto">
+          <img src="https://source.unsplash.com/600x800/?beauty,model,glamour" alt="Hero" class="img-fluid rounded-4 shadow-lg anim-pop" data-anim>
+          <div class="position-absolute" style="right:-20px;bottom:-20px;transform:rotate(-8deg)">
+            <img src="https://source.unsplash.com/260x360/?hair,style" alt="side" class="img-fluid rounded-4 shadow anim-pop fade-delay-2" data-anim style="width:220px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg"><path fill="#fbf8f9" d="M0,32L60,48C120,64,240,96,360,96C480,96,600,64,720,48C840,32,960,32,1080,37.3C1200,43,1320,53,1380,58.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path></svg>
+</header>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="container text-center">
+    <h2 class="section-title anim" data-anim>Our Premium Services</h2>
+    <div class="divider anim fade-delay-1" data-anim></div>
+
+    <div class="row g-4 mt-4">
+      <!-- card 1 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="service-card shadow-sm h-100 anim" data-anim>
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?bridal,makeup" alt="Bridal Makeup">
+          <div class="service-body">
+            <h5 class="fw-bold">Bridal & Event Makeup</h5>
+            <p class="mb-2 text-muted">HD & airbrush makeup, trial sessions, on-location bridal teams and custom looks.</p>
+            <a href="#contact" class="text-decoration-none">Book trial <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- card 2 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="service-card shadow-sm h-100 anim fade-delay-1" data-anim>
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?fashion,stylist" alt="Fashion Styling">
+          <div class="service-body">
+            <h5 class="fw-bold">Fashion Styling & Wardrobe</h5>
+            <p class="mb-2 text-muted">Closet edits, personal shopping, editorial styling for campaigns and shoots.</p>
+            <a href="#contact" class="text-decoration-none">Start styling <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- card 3 -->
+      <div class="col-md-6 col-lg-4">
+        <article class="service-card shadow-sm h-100 anim fade-delay-2" data-anim>
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?skincare,facial" alt="Skin Treatments">
+          <div class="service-body">
+            <h5 class="fw-bold">Skin Glow Treatments</h5>
+            <p class="mb-2 text-muted">Pre-bridal skincare, glow facials and customized dermal plans.</p>
+            <a href="#contact" class="text-decoration-none">Get glowing <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <!-- more cards -->
+      <div class="col-md-6 col-lg-4 anim fade-delay-3" data-anim>
+        <article class="service-card shadow-sm h-100">
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?hair,styling" alt="Hair">
+          <div class="service-body">
+            <h5 class="fw-bold">Hair Styling & Extensions</h5>
+            <p class="mb-2 text-muted">Creative updos, blowouts, bridal hair and premium extension work.</p>
+            <a href="#contact" class="text-decoration-none">View salon <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 anim fade-delay-1" data-anim>
+        <article class="service-card shadow-sm h-100">
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?photoshoot,portfolio" alt="Photoshoot">
+          <div class="service-body">
+            <h5 class="fw-bold">Portfolio & Editorial</h5>
+            <p class="mb-2 text-muted">Shoot direction, makeup + styling for models and editorial work.</p>
+            <a href="#portfolio" class="text-decoration-none">See work <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 anim fade-delay-2" data-anim>
+        <article class="service-card shadow-sm h-100">
+          <img class="service-thumb w-100" src="https://source.unsplash.com/900x600/?lifestyle,brand" alt="Lifestyle">
+          <div class="service-body">
+            <h5 class="fw-bold">Lifestyle & Branding</h5>
+            <p class="mb-2 text-muted">Personal brand building, content strategy and influencer collaborations.</p>
+            <a href="#contact" class="text-decoration-none">Brand with us <i class="fa-solid fa-arrow-right ms-2"></i></a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section bg-light" id="gallery">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title anim" data-anim>Gallery</h2>
+      <div class="divider anim fade-delay-1" data-anim></div>
+      <p class="text-muted anim fade-delay-2" data-anim>A curated selection of recent shoots, bridal looks and creative styling.</p>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item anim" data-anim><img src="https://source.unsplash.com/800x800/?makeup,closeup" alt="g1"></div>
+      <div class="gallery-item anim fade-delay-1" data-anim><img src="https://source.unsplash.com/800x800/?fashion,editorial" alt="g2"></div>
+      <div class="gallery-item anim fade-delay-2" data-anim><img src="https://source.unsplash.com/800x800/?bridal,portrait" alt="g3"></div>
+      <div class="gallery-item anim fade-delay-3" data-anim><img src="https://source.unsplash.com/800x800/?hair,updo" alt="g4"></div>
+      <div class="gallery-item anim fade-delay-1" data-anim><img src="https://source.unsplash.com/800x800/?skincare,spa" alt="g5"></div>
+      <div class="gallery-item anim fade-delay-2" data-anim><img src="https://source.unsplash.com/800x800/?studio,shoot" alt="g6"></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 class="section-title anim" data-anim>Portfolio Highlights</h2>
+      <div class="divider anim fade-delay-1" data-anim></div>
+    </div>
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-6">
+        <div class="portfolio-hero shadow-sm parallax anim" data-anim data-parallax>
+          <img src="https://source.unsplash.com/1100x700/?model,editorial" class="img-fluid" alt="portfolio1">
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6 anim" data-anim><img src="https://source.unsplash.com/540x360/?fashion,shoot" class="img-fluid rounded" alt="p2"></div>
+          <div class="col-6 anim fade-delay-1" data-anim><img src="https://source.unsplash.com/540x360/?beauty,closeup" class="img-fluid rounded" alt="p3"></div>
+          <div class="col-12 mt-3 anim fade-delay-2" data-anim><img src="https://source.unsplash.com/1100x400/?styling,editorial" class="img-fluid rounded" alt="p4"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section bg-white" id="contact">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card contact-card shadow-sm p-4">
+          <div class="row g-0 align-items-center">
+            <div class="col-md-5 p-4 border-end">
+              <h4 class="fw-bold anim" data-anim>Contact & Bookings</h4>
+              <p class="text-muted mb-3 anim fade-delay-1" data-anim>We respond within 24–48 hours for enquiries. For urgent WhatsApp booking use the button below.</p>
+
+              <ul class="list-unstyled small text-muted anim fade-delay-2" data-anim>
+                <li><i class="fa-solid fa-user me-2 text-muted"></i><strong>Founder:</strong> Prithi Panthal</li>
+                <li class="mt-2"><i class="fa-solid fa-phone me-2 text-muted"></i><strong>WhatsApp:</strong> +91 77983 48793</li>
+                <li class="mt-2"><i class="fa-solid fa-envelope me-2 text-muted"></i><strong>Email:</strong> dpanthalprithi@gmail.com</li>
+              </ul>
+
+              <a class="btn btn-success mt-3 w-100 anim fade-delay-3" href="#" id="whatsappBtn"><i class="fab fa-whatsapp me-2"></i>Message on WhatsApp</a>
+            </div>
+
+            <div class="col-md-7 p-4">
+              <form id="contactForm">
+                <div class="mb-3 anim" data-anim>
+                  <label class="form-label">Your name</label>
+                  <input id="name" class="form-control" required>
+                </div>
+                <div class="mb-3 anim fade-delay-1" data-anim>
+                  <label class="form-label">Email</label>
+                  <input id="email" type="email" class="form-control" required>
+                </div>
+                <div class="mb-3 anim fade-delay-2" data-anim>
+                  <label class="form-label">Message</label>
+                  <textarea id="message" rows="4" class="form-control" required></textarea>
+                </div>
+                <div class="d-flex gap-2 anim fade-delay-3" data-anim>
+                  <button type="submit" class="btn btn-accent">Send Message</button>
+                  <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    <div class="mb-3 mb-md-0">
+      <strong class="text-white">GloryGlam</strong>
+      <div class="small text-muted">Beauty • Fashion • Lifestyle</div>
+    </div>
+    <div class="small text-muted">© 2025 GloryGlam. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Scroll offset for fixed navbar
+  (function(){
+    const navHeight = document.querySelector('.navbar').offsetHeight;
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',(e)=>{
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){e.preventDefault();window.scrollTo({top: target.getBoundingClientRect().top + window.pageYOffset - navHeight - 12, behavior:'smooth'});} 
+      })
+    })
+  })();
+
+  // Intersection Observer for anims
+  (function(){
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target)}
+      })
+    },{threshold:0.12});
+
+    document.querySelectorAll('[data-anim]').forEach(el=>obs.observe(el));
+  })();
+
+  // Parallax subtle tilt on mouse move for portfolio
+  (function(){
+    const p = document.querySelector('[data-parallax]');
+    if(!p) return;
+    p.addEventListener('mousemove', (ev)=>{
+      const r = p.getBoundingClientRect();
+      const x = (ev.clientX - r.left) / r.width - .5;
+      const y = (ev.clientY - r.top) / r.height - .5;
+      p.style.transform = `translateZ(0) rotateX(${ -y * 4 }deg) rotateY(${ x * 6 }deg)`;
+    });
+    p.addEventListener('mouseleave', ()=>{p.style.transform='none'})
+  })();
+
+  // WhatsApp buttons
+  document.getElementById('whatsappBtn').addEventListener('click', function(e){e.preventDefault();const phone='917798348793';const text=encodeURIComponent('Hello GloryGlam! I would like to enquire about bookings.');window.open(`https://wa.me/${phone}?text=${text}`,'_blank');});
+  document.getElementById('floatWA').addEventListener('click', function(e){e.preventDefault();const phone='917798348793';const text=encodeURIComponent('Hello GloryGlam! Quick booking request.');window.open(`https://wa.me/${phone}?text=${text}`,'_blank');});
+
+  // Contact form fallback -> mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e){e.preventDefault();const name=document.getElementById('name').value.trim();const email=document.getElementById('email').value.trim();const message=document.getElementById('message').value.trim();const subject=encodeURIComponent('Website enquiry from '+name);const body=encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+${message}`);window.location.href=`mailto:dpanthalprithi@gmail.com?subject=${subject}&body=${body}`});
+</script>
+</body>
+</html>
