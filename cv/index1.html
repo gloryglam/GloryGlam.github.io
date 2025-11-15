@@ -6,140 +6,152 @@
   <title>Prithi Panthal — Makeup Artist CV</title>
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--accent:#C75A8A;--muted:#6b7280}
-    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:#fbfbfd;color:#222}
-    .brand{font-family:'Playfair Display',serif;color:var(--accent)}
-    .card{border:none;border-radius:16px;box-shadow:0 8px 30px rgba(17,24,39,0.06)}
-    .profile-pic{width:128px;height:128px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 6px 18px rgba(199,90,138,0.15)}
+    :root{--accent:#c95a84;--accent-2:#f7eaf0;--muted:#6b7280}
+    *{box-sizing:border-box}
+    body{font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:linear-gradient(180deg,#fbfbfd 0%, #fff 100%);color:#222}
+    .card{border:none;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(17,24,39,0.07)}
+    .sidebar{background:linear-gradient(180deg, rgba(201,90,132,0.08), rgba(201,90,132,0.02));padding:28px}
+    .brand{font-family:'Playfair Display',serif;color:var(--accent);font-size:26px}
+    .role{color:#3b3b3b;font-weight:600}
+    .profile-pic{width:140px;height:140px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 10px 30px rgba(201,90,132,0.12)}
     .muted{color:var(--muted)}
-    .skill-chip{background:#fff;border:1px solid #f0e6ef;padding:6px 10px;border-radius:999px;margin:4px;display:inline-block}
+    .skill-badge{display:inline-block;padding:6px 10px;margin:6px;border-radius:999px;background:#fff;border:1px solid rgba(200,200,200,0.08);font-size:13px}
     .section-title{font-weight:600;color:#111;margin-bottom:10px}
-    .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:8px}
-    .contact-item i{width:20px}
-    .project-list li{margin-bottom:6px}
+    .divider{height:1px;background:linear-gradient(90deg,#eee, #f5e9f2);margin:18px 0}
+    .portfolio-img{width:100%;height:140px;object-fit:cover;border-radius:8px}
+    .contact-line i{width:20px}
     .print-btn{position:fixed;right:20px;bottom:20px;z-index:999}
-    @media (max-width:767px){.profile-pic{width:96px;height:96px}}
+    @media (max-width:767px){.profile-pic{width:110px;height:110px}}
   </style>
 </head>
 <body>
   <div class="container py-5">
     <div class="row justify-content-center">
-      <div class="col-lg-10">
-        <div class="card p-4">
-          <div class="row g-3">
-            <div class="col-md-3 text-center d-flex flex-column align-items-center justify-content-center">
-              <!-- Placeholder headshot (replace with real image) -->
-              <img src="https://via.placeholder.com/300x300.png?text=Headshot" alt="Prithi Panthal" class="profile-pic mb-3">
-              <h2 class="h5 brand mb-0">Prithi Panthal</h2>
-              <p class="muted small">Bridal & Freelance Makeup Artist</p>
+      <div class="col-xl-10">
+        <div class="card row g-0">
+          <div class="col-md-4 sidebar d-flex flex-column align-items-center text-center">
+            <img src="https://via.placeholder.com/420x420.png?text=Headshot" alt="Prithi Panthal" class="profile-pic mb-3">
+            <div class="brand">Prithi Panthal</div>
+            <div class="role">Bridal & Freelance Makeup Artist</div>
+            <div class="muted small mt-2">Age: 27 • Virar West, Maharashtra</div>
+
+            <div class="divider w-100"></div>
+
+            <div class="w-100 text-start">
+              <h6 class="section-title">Contact</h6>
+              <div class="small contact-line"><i class="bi bi-geo-alt-fill"></i> Virar West, Gokul Township</div>
+              <div class="small contact-line mt-1"><i class="bi bi-telephone-fill"></i> 7798348793</div>
+              <div class="small contact-line mt-1"><i class="bi bi-envelope-fill"></i> dpanthalprithi@gmail.com</div>
             </div>
-            <div class="col-md-9">
-              <div class="d-flex justify-content-between align-items-start">
-                <div>
-                  <h1 class="mb-1">Prithi Panthal <span class="muted" style="font-weight:500">— 27</span></h1>
-                  <p class="mb-1">Creative and dedicated Bridal & Freelance Makeup Artist with 2.5 years experience — specializing in Natural Soft Bridal Glam, Traditional Bridal Looks and Fashion Photoshoots.</p>
-                </div>
-                <div class="text-end muted small">
-                  <div class="contact-item"><i class="bi bi-geo-alt-fill"></i> Virar West, Gokul Township</div>
-                  <div class="contact-item mt-1">📞 7798348793</div>
-                  <div class="contact-item mt-1">✉️ dpanthalprithi@gmail.com</div>
-                </div>
+
+            <div class="divider w-100"></div>
+
+            <div class="w-100 text-start">
+              <h6 class="section-title">Core Skills</h6>
+              <div>
+                <span class="skill-badge">Natural Soft Glam</span>
+                <span class="skill-badge">Traditional Bridal</span>
+                <span class="skill-badge">Photoshoots</span>
+                <span class="skill-badge">Hairstyling</span>
+                <span class="skill-badge">Skin Prep</span>
               </div>
+            </div>
 
-              <hr>
+            <div class="mt-auto w-100 text-start small muted">
+              <div class="section-title">Products</div>
+              Forever 52 • Kriti Lab • PAC • Maybelline • Makeup Studio
+            </div>
+          </div>
 
-              <div class="row">
-                <div class="col-md-6">
-                  <h6 class="section-title">Professional Summary</h6>
-                  <p class="small muted">Friendly, professional on set — skilled at skin preparation, quick touch-ups, following mood boards, and handling last-minute changes. Experienced with photographers, stylists and directors for weddings, ad shoots and fashion projects.</p>
+          <div class="col-md-8 p-4">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <h2 class="mb-1">Professional Summary</h2>
+                <p class="muted">Creative and dedicated Bridal & Freelance Makeup Artist with 2.5 years of experience. Specializing in <strong>Natural Soft Bridal Glam</strong>, <strong>Traditional Bridal Looks</strong>, and <strong>Fashion Photoshoots</strong>. Friendly and professional on set; expert in skin preparation, quick touch-ups, following mood boards and adapting to last-minute changes.</p>
+              </div>
+              <div class="text-end small muted">
+                <div><strong>Location:</strong> Virar West</div>
+                <div class="mt-1"><strong>Availability:</strong> Freelance</div>
+              </div>
+            </div>
 
-                  <h6 class="section-title mt-3">Core Skills</h6>
-                  <div class="mb-2">
-                    <span class="skill-chip">Natural Soft Glam</span>
-                    <span class="skill-chip">Traditional Bridal</span>
-                    <span class="skill-chip">Fashion Photoshoots</span>
-                    <span class="skill-chip">Hairstyling</span>
-                    <span class="skill-chip">Skin Prep</span>
-                    <span class="skill-chip">Consultations</span>
-                  </div>
+            <div class="divider"></div>
 
-                  <h6 class="section-title mt-3">Professional Traits</h6>
-                  <ul class="small muted">
-                    <li>Friendly and easy to talk to</li>
-                    <li>Professional on set; calm and patient with brides</li>
-                    <li>Good at managing time & last-minute changes</li>
-                    <li>Strong skin preparation skills</li>
-                  </ul>
-                </div>
-
-                <div class="col-md-6">
-                  <h6 class="section-title">Experience</h6>
+            <div class="row">
+              <div class="col-lg-7">
+                <h6 class="section-title">Experience</h6>
+                <div>
                   <div class="mb-2">
                     <strong>Freelance Makeup Artist</strong> — Virar, Maharashtra
-                    <div class="muted small">2.5 Years Experience</div>
+                    <div class="muted small">2.5 Years</div>
                     <ul class="small mt-2 muted">
                       <li>Specialized in Natural Soft Bridal Glam & Traditional Bridal Looks.</li>
                       <li>Makeup for fashion photoshoots, jewelry & western fashion shoots.</li>
-                      <li>Collaborated with photographers, stylists & directors to follow mood boards.</li>
-                      <li>Worked on ad shoots including Tata Play and fashion campaigns like Myntra.</li>
-                      <li>Maintained hygiene and client relationships leading to repeat bookings.</li>
+                      <li>Collaborated with photographers, stylists & directors to follow mood boards and creative direction.</li>
+                      <li>Worked on ad shoots including Tata Play and campaigns like Myntra.</li>
+                      <li>Maintained hygiene standards and built repeat client relationships.</li>
                     </ul>
                   </div>
-
-                  <h6 class="section-title mt-3">Education & Training</h6>
-                  <ul class="small muted">
-                    <li>12th Grade Completed</li>
-                    <li>Professional Makeup Courses – Kapil's Academy (Bridal, HD, Soft Glam Techniques, Client Consultation)</li>
-                  </ul>
-
                 </div>
+
+                <h6 class="section-title mt-3">Education & Training</h6>
+                <ul class="small muted">
+                  <li>12th Grade Completed</li>
+                  <li>Professional Makeup Courses – Kapil's Academy (Bridal Makeup, HD Makeup, Soft Glam Techniques, Client Consultation)</li>
+                </ul>
+
+                <h6 class="section-title mt-3">Professional Traits</h6>
+                <ul class="small muted">
+                  <li>Friendly and easy to talk to; calm and patient with brides</li>
+                  <li>Professional on set; good at time management and last-minute changes</li>
+                  <li>Strong skin preparation and product knowledge</li>
+                </ul>
               </div>
 
-              <hr>
+              <div class="col-lg-5">
+                <h6 class="section-title">Key Projects / Portfolio</h6>
+                <div class="mb-3">
+                  <img src="https://via.placeholder.com/600x400.png?text=Myntra+Shoot" alt="Myntra" class="portfolio-img mb-2">
+                  <img src="https://via.placeholder.com/600x400.png?text=Tata+Play+Ad" alt="Tata Play" class="portfolio-img">
+                </div>
 
-              <div class="row">
-                <div class="col-md-8">
-                  <h6 class="section-title">Key Projects / Portfolio</h6>
-                  <ul class="project-list small">
+                <div class="mt-2 small muted">
+                  <strong>Selected:</strong>
+                  <ul class="mt-2">
                     <li>Myntra Fashion Shoot</li>
                     <li>Tata Play Ad Shoot</li>
                     <li>Rupesh Jewellers Shoot</li>
-                    <li>Additional fashion & jewelry campaigns</li>
                   </ul>
                 </div>
-                <div class="col-md-4 text-md-end">
-                  <!-- Placeholder banner / portfolio image -->
-                  <img src="https://via.placeholder.com/420x260.png?text=Portfolio+Banner" alt="Portfolio" class="img-fluid rounded mt-2 shadow-sm">
-                </div>
               </div>
-
-              <div class="d-flex justify-content-between align-items-center mt-4">
-                <div>
-                  <h6 class="section-title">Products Familiar With</h6>
-                  <div class="small muted">Forever 52, Kriti Lab, PAC, Maybelline, Makeup Studio</div>
-                </div>
-                <div class="text-end">
-                  <h6 class="section-title">References</h6>
-                  <div class="small muted">Available upon request</div>
-                </div>
-              </div>
-
             </div>
+
+            <div class="divider"></div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="section-title">References</h6>
+                <div class="small muted">Available upon request</div>
+              </div>
+              <div class="text-end small muted">
+                <div><i class="bi bi-telephone-fill"></i> 7798348793</div>
+                <div class="mt-1"><i class="bi bi-envelope-fill"></i> dpanthalprithi@gmail.com</div>
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <div class="text-center mt-3 small muted">Designed with care • CV generated using Bootstrap 5</div>
       </div>
     </div>
   </div>
 
-  <!-- Print Button -->
-  <button class="btn btn-primary print-btn" onclick="window.print()">Print / Save as PDF</button>
+  <button class="btn btn-primary print-btn" onclick="window.print()"><i class="bi bi-printer"></i> Print / Save as PDF</button>
 
-  <!-- Bootstrap JS (Popper included) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
