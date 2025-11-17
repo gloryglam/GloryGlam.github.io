@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Prithi Panthal — CV</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Animate.css (subtle) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    :root{
+      --accent: #c2185b;
+      --muted: #6b6b6b;
+      --bg: #fff7fb;
+      --card-bg: rgba(255,255,255,0.92);
+      --radius: 16px;
+      --shadow: 0 12px 30px rgba(20,20,20,0.08);
+    }
+
+    body{
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #fffafc 0%, #fff 100%);
+      padding: 28px;
+      color: #222;
+    }
+
+    .cv-card{
+      max-width: 980px;
+      margin: 18px auto;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    /* Header area */
+    .cv-top{
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 24px;
+      padding: 28px;
+      align-items: center;
+    }
+
+    .profile-photo{
+      width: 200px;
+      height: 200px;
+      border-radius: 14px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 6px solid rgba(194,24,91,0.06);
+    }
+
+    .name {
+      font-weight: 700;
+      font-size: 1.75rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .title {
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .contact-line {
+      color: #444;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+    }
+
+    /* Left rail (photo + QR + quick) */
+    .left-rail{
+      padding: 8px 18px;
+      border-right: 1px solid rgba(0,0,0,0.04);
+      min-height: 100%;
+    }
+
+    .qr-wrap{
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .qr-img{
+      width: 130px;
+      height: 130px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      border: 4px solid rgba(194,24,91,0.04);
+    }
+
+    .scan-text{
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* Right column content */
+    .content{
+      padding: 8px 28px 28px 8px;
+    }
+
+    .section{
+      margin-bottom: 18px;
+    }
+
+    .section h3{
+      font-size: 1.05rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+      margin-top: 6px;
+      font-weight: 600;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
+
+    .skill-badge{
+      display:inline-block;
+      background: #fff0f6;
+      color: #7a003a;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin: 4px 6px 4px 0;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+
+    ul.simple{
+      padding-left: 18px;
+      margin: 0;
+    }
+    ul.simple li{
+      margin-bottom: 8px;
+    }
+
+    .portfolio .row > [class*="col-"]{
+      margin-bottom: 12px;
+    }
+
+    .portfolio-img{
+      width:100%;
+      border-radius: 10px;
+      display:block;
+      object-fit:cover;
+      height:160px;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .portfolio-img:hover{ transform: scale(1.03); box-shadow: 0 14px 30px rgba(0,0,0,0.08);}
+
+    /* Footer / print */
+    .cv-footer{
+      padding: 18px 28px 26px;
+      background: linear-gradient(90deg, rgba(194,24,91,0.03), rgba(0,0,0,0));
+      border-top: 1px solid rgba(0,0,0,0.04);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+    }
+
+    .print-btn{
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight:600;
+      box-shadow: 0 8px 20px rgba(194,24,91,0.08);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 880px){
+      .cv-top{ grid-template-columns: 1fr; text-align:center; gap:12px; }
+      .left-rail{ border-right: none; border-bottom: 1px solid rgba(0,0,0,0.04); padding-bottom: 18px;}
+      .content{ padding-top: 18px; }
+      .profile-photo{ width:150px; height:150px; }
+    }
+
+    @media print{
+      body{ background: #fff; padding:0; }
+      .cv-card{ box-shadow:none; max-width: 100%; border-radius: 0; }
+      .print-btn{ display:none; }
+      .qr-img{ display:inline-block; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="cv-card animate__animated animate__fadeIn">
+    <div class="cv-top">
+
+      <!-- LEFT RAIL: photo + QR + contact quick -->
+      <div class="left-rail">
+        <!-- Profile photo (replace the src with your own headshot URL) -->
+        <img class="profile-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"
+             alt="Prithi Panthal — profile photo">
+
+        <!-- Quick contact -->
+        <div class="text-center mt-2">
+          <div class="name">Prithi Panthal</div>
+          <div class="title">Bridal & Freelance Makeup Artist</div>
+          <div class="contact-line"><strong>📍</strong> Virar West</div>
+          <div class="contact-line"><strong>✉️</strong> dpanthalprithi@gmail.com</div>
+          <div class="contact-line"><strong>📞</strong> 7798348793</div>
+        </div>
+
+        <!-- QR: clickable and scannable -->
+        <div class="qr-wrap mt-3">
+          <!-- QR image points to tel: so scanning initiates a call. Replace number if needed. -->
+          <a href="tel:7798348793" title="Tap to call on mobile">
+            <img class="qr-img" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=tel:7798348793&chld=L|1"
+                 alt="Scan to call 7798348793">
+          </a>
+          <div class="scan-text">Scan to call</div>
+        </div>
+
+        <!-- Small note / availability -->
+        <div class="text-center mt-3" style="font-size:0.9rem;color:var(--muted);">
+          Available for bridal bookings, photoshoots & ad shoots
+        </div>
+
+      </div> <!-- /left-rail -->
+
+
+      <!-- RIGHT: main content -->
+      <div class="content">
+
+        <!-- Summary -->
+        <section class="section">
+          <h3>Professional Summary</h3>
+          <p style="margin-bottom:0.5rem;">
+            Creative and dedicated Bridal & Freelance Makeup Artist with 2.5 years of professional experience.
+            Specialized in <strong>Natural Soft Bridal Glam</strong>, <strong>Traditional Bridal Looks</strong>,
+            and <strong>Fashion / Editorial Photoshoot Makeup</strong>. Strong skills in skin preparation, quick touch-ups,
+            following moodboards, and working collaboratively with photographers and stylists on set.
+          </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+          <h3>Core Skills</h3>
+          <div>
+            <span class="skill-badge">Bridal Makeup</span>
+            <span class="skill-badge">Soft Glam</span>
+            <span class="skill-badge">Traditional Looks</span>
+            <span class="skill-badge">Fashion & Editorial</span>
+            <span class="skill-badge">Hair: Curls & Buns</span>
+            <span class="skill-badge">Color Theory</span>
+            <span class="skill-badge">Skin Prep</span>
+            <span class="skill-badge">Client Consults</span>
+            <span class="skill-badge">Hygiene & Sanitation</span>
+            <span class="skill-badge">Moodboard Execution</span>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="section">
+          <h3>Professional Experience</h3>
+          <div style="font-weight:600;margin-bottom:6px;">Freelance Makeup Artist — Virar, Maharashtra</div>
+          <div style="color:var(--muted);font-size:0.95rem;margin-bottom:8px;"><em>2.5 Years</em></div>
+          <ul class="simple">
+            <li>Specialized in Natural Soft Bridal Glam & Traditional Bridal Looks for diverse skin tones.</li>
+            <li>Makeup for fashion photoshoots, jewelry and western-fashion campaigns (Myntra, ad shoots).</li>
+            <li>Collaborated with photographers, stylists, and directors to follow creative direction and moodboards.</li>
+            <li>Handled on-set quick touch-ups, product recommendations and client consultations.</li>
+            <li>Maintained strict hygiene & sanitation standards; built repeat client relationships.</li>
+          </ul>
+        </section>
+
+        <!-- Portfolio -->
+        <section class="section portfolio">
+          <h3>Key Projects / Portfolio</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <img class="portfolio-img" src="https://images.unsplash.com/photo-1611599530056-9dbf6d5b35c7?auto=format&fit=crop&w=900&q=80"
+                   alt="Myntra fashion shoot — makeup by Prithi">
+              <div style="font-weight:600;margin-top:6px;">Myntra Fashion Shoot</div>
+            </div>
+            <div class="col-md-6">
+              <img class="portfolio-img" src="https://images.unsplash.com/photo-1581091215367-4b4fbc933f46?auto=format&fit=crop&w=900&q=80"
+                   alt="Tata Play ad shoot — makeup by Prithi">
+              <div style="font-weight:600;margin-top:6px;">Tata Play Ad Shoot</div>
+            </div>
+
+            <div class="col-12 col-md-6 mt-2">
+              <img class="portfolio-img" src="https://images.unsplash.com/photo-1591022919391-22bfa9f57da0?auto=format&fit=crop&w=900&q=80"
+                   alt="Rupesh jewellers shoot — makeup by Prithi">
+              <div style="font-weight:600;margin-top:6px;">Rupesh Jewellers Shoot</div>
+            </div>
+            <div class="col-12 col-md-6 mt-2">
+              <img class="portfolio-img" src="https://images.unsplash.com/photo-1504890214039-cb06f9b6a1f9?auto=format&fit=crop&w=900&q=80"
+                   alt="Editorial makeup sample">
+              <div style="font-weight:600;margin-top:6px;">Editorial / Fashion Sample</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+          <h3>Education & Training</h3>
+          <ul class="simple">
+            <li>12th Grade Completed</li>
+            <li>Professional Makeup Courses – Kapil’s Academy (Bridal Makeup, HD Makeup, Soft Glam Techniques)</li>
+          </ul>
+        </section>
+
+        <!-- Languages -->
+        <section class="section">
+          <h3>Languages</h3>
+          <div>
+            <span class="skill-badge">Tulu</span>
+            <span class="skill-badge">Kannada</span>
+            <span class="skill-badge">Hindi</span>
+            <span class="skill-badge">English</span>
+            <span class="skill-badge">Marathi</span>
+          </div>
+        </section>
+
+        <!-- Traits -->
+        <section class="section">
+          <h3>Professional Traits</h3>
+          <ul class="simple">
+            <li>Friendly and calm with clients; excellent communication.</li>
+            <li>Professional on set; punctual and organized.</li>
+            <li>Strong attention to detail and time management.</li>
+            <li>Comfortable with last-minute changes and quick touch-ups.</li>
+          </ul>
+        </section>
+
+      </div> <!-- /content -->
+
+    </div> <!-- /cv-top -->
+
+    <!-- Footer with print and small note -->
+    <div class="cv-footer">
+      <div style="font-size:0.95rem;color:var(--muted);">
+        © Prithi Panthal — Makeup Artist · Available for bookings & shoots
+      </div>
+      <div>
+        <button class="print-btn" onclick="window.print()">🖨 Print</button>
+      </div>
+    </div>
+
+  </div> <!-- /cv-card -->
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
