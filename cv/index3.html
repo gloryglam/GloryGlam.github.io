@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prithi Panthal — CV</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------------------
+       Theme variables — easy to tweak
+       --------------------------- */
+    :root{
+      --bg: #fffafc;
+      --card-bg: #ffffff;
+      --accent: #c2185b;        /* primary accent (rose) */
+      --accent-2: #ff7aa6;      /* soft accent */
+      --muted: #6b6b6b;
+      --glass: rgba(255,255,255,0.85);
+      --radius: 14px;
+      --shadow: 0 14px 40px rgba(18,18,20,0.08);
+      --max-width: 980px;
+      --gutter: 22px;
+    }
+
+    /* ---------------------------
+       Base
+       --------------------------- */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+      color:#121212;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:28px 18px;
+    }
+
+    /* ---------------------------
+       Wrapper card
+       --------------------------- */
+    .cv {
+      max-width: var(--max-width);
+      margin: 14px auto;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: var(--gutter);
+    }
+
+    /* left column (photo/quick-contact) */
+    .cv__left {
+      background: linear-gradient(180deg, rgba(194,24,91,0.03), rgba(255,255,255,0));
+      padding: 26px;
+      border-right: 1px solid rgba(0,0,0,0.04);
+      min-height: 100%;
+    }
+
+    .profile {
+      width: 100%;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:14px;
+    }
+
+    .profile__img{
+      width: 190px;
+      height: 190px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 6px solid rgba(194,24,91,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      background:#f0e7eb;
+    }
+
+    .profile__name{
+      font-size: 1.35rem;
+      font-weight:700;
+      color:var(--accent);
+      text-align:center;
+      margin:0;
+    }
+    .profile__role{ margin:0; color:var(--muted); font-weight:600; font-size:0.95rem; text-align:center; }
+
+    .contact {
+      margin-top:6px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      font-size:0.95rem;
+      color:#222;
+    }
+    .contact__line{ display:flex; gap:8px; align-items:center; color:var(--muted); font-size:0.95rem; }
+
+    /* QR block */
+    .qr {
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      margin-top:12px;
+      gap:8px;
+    }
+    .qr__img{
+      width:128px;
+      height:128px;
+      border-radius:10px;
+      object-fit:cover;
+      border: 4px solid rgba(194,24,91,0.04);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.05);
+    }
+    .qr__note{ font-size:0.86rem; color:var(--muted); }
+
+    .left__meta{
+      margin-top:14px;
+      font-size:0.9rem;
+      color:var(--muted);
+      line-height:1.45;
+      text-align:center;
+    }
+
+    /* right column (content) */
+    .cv__right {
+      padding: 26px 24px;
+    }
+
+    header.cv__head {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:start;
+    }
+    .cv__headline {
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .cv__title{
+      font-size:1.55rem;
+      font-weight:700;
+      color:var(--accent);
+      margin:0;
+    }
+    .cv__subtitle{
+      margin:0;
+      color:var(--muted);
+      font-weight:600;
+    }
+
+    .cv__actions { display:flex; gap:10px; align-items:center; }
+    .btn--print{
+      border: none;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      color:#fff;
+      padding:8px 14px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow: 0 10px 24px rgba(194,24,91,0.08);
+    }
+
+    /* sections */
+    .section { margin-top:18px; }
+    .section__title{
+      font-size:1.05rem;
+      font-weight:600;
+      color:var(--accent);
+      margin:0 0 10px 0;
+      padding-left:10px;
+      border-left:4px solid var(--accent);
+    }
+
+    p.lead{ margin:0; color:#222; line-height:1.55; }
+
+    /* skill chips */
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .chip{
+      background: #fff0f6;
+      color:#7a003a;
+      padding:6px 12px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:0.86rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    }
+
+    ul.clean{ padding-left:18px; margin:6px 0 0 0; }
+    ul.clean li{ margin-bottom:8px; color:#222; }
+
+    .portfolio-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top:8px;
+    }
+    .port-item{
+      border-radius:10px;
+      overflow:hidden;
+      height:140px;
+      display:block;
+      position:relative;
+      background:#eee;
+    }
+    .port-item img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .28s ease, box-shadow .28s ease; }
+    .port-item:hover img{ transform:scale(1.04); box-shadow: 0 12px 34px rgba(0,0,0,0.08); }
+
+    /* languages row */
+    .lang-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+    .lang-pill{ background: #f4f6f8; color:#222; padding:6px 10px; border-radius:8px; font-weight:600; font-size:0.9rem; }
+
+    /* footer */
+    .cv__foot{ padding:18px 26px; border-top:1px solid rgba(0,0,0,0.04); display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:0.9rem; }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .cv{ grid-template-columns: 1fr; }
+      .cv__left{ border-right:none; border-bottom:1px solid rgba(0,0,0,0.04); }
+      .cv__right{ padding:20px; }
+      .profile__img{ width:150px; height:150px; }
+      .port-item{ height:120px; }
+    }
+
+    /* print */
+    @media print{
+      body{ padding:0; background:#fff; }
+      .cv{ box-shadow:none; border-radius:0; max-width:100%; }
+      .btn--print{ display:none; }
+      .qr__img{ display:inline-block; }
+    }
+
+    /* small accessibility & focus */
+    a, button{ outline-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <main class="cv" role="document" aria-label="Curriculum Vitae — Prithi Panthal">
+
+    <!-- LEFT COLUMN -->
+    <aside class="cv__left" aria-label="Profile and contact">
+      <div class="profile" role="region" aria-labelledby="profile-name">
+        <!-- PROFILE IMAGE: replace src with your headshot -->
+        <img class="profile__img" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80"
+             alt="Headshot of Prithi Panthal">
+
+        <div>
+          <h1 id="profile-name" class="profile__name">Prithi Panthal</h1>
+          <div class="profile__role">Bridal & Freelance Makeup Artist</div>
+        </div>
+
+        <!-- contact -->
+        <div class="contact" aria-label="Contact details">
+          <div class="contact__line"><strong>📍</strong> Virar West, Gokul Township, Viney Unique Garden, 3rd Floor, 301</div>
+          <div class="contact__line"><strong>✉️</strong> <a href="mailto:dpanthalprithi@gmail.com">dpanthalprithi@gmail.com</a></div>
+          <div class="contact__line"><strong>📞</strong> <a href="tel:7798348793">7798348793</a></div>
+          <div class="contact__line"><strong>👶</strong> Born: May 9, 1994</div>
+        </div>
+
+        <!-- QR: scanning triggers a call. Replace number if needed -->
+        <div class="qr" aria-hidden="false">
+          <a href="tel:7798348793" title="Tap to call on mobile">
+            <img class="qr__img" src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=tel:7798348793&chld=L|1"
+                 alt="QR code to call 7798348793">
+          </a>
+          <div class="qr__note">Scan to call / Tap on phone</div>
+        </div>
+
+        <div class="left__meta">
+          Available for bridal bookings, ad shoots & fashion projects. Professional hygiene standards; travel within Mumbai region.
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+    <section class="cv__right" aria-label="CV content">
+
+      <!-- header -->
+      <header class="cv__head" role="banner" aria-labelledby="cv-heading">
+        <div class="cv__headline">
+          <h2 id="cv-heading" class="cv__title">Makeup Artist — Bridal & Editorial</h2>
+          <div class="cv__subtitle">Natural Soft Glam · Traditional Bridal · Fashion Editorial</div>
+        </div>
+
+        <div class="cv__actions">
+          <button class="btn--print" onclick="window.print()" aria-label="Print CV">🖨 Print</button>
+        </div>
+      </header>
+
+      <!-- summary -->
+      <div class="section" aria-labelledby="summary-heading">
+        <h3 id="summary-heading" class="section__title">Professional Summary</h3>
+        <p class="lead">
+          Creative and professional makeup artist with 2.5 years of focused experience in bridal, editorial and commercial work.
+          Specializes in natural soft-glam, traditional bridal looks, and fashion photoshoots. Works collaboratively with photographers,
+          stylists, and production teams to deliver the desired mood and finish under fast-paced conditions.
+        </p>
+      </div>
+
+      <!-- skills -->
+      <div class="section" aria-labelledby="skills-heading">
+        <h3 id="skills-heading" class="section__title">Core Skills</h3>
+        <div class="chips" aria-hidden="false">
+          <span class="chip">Bridal Makeup</span>
+          <span class="chip">Soft Glam</span>
+          <span class="chip">Traditional Looks</span>
+          <span class="chip">Editorial & Fashion</span>
+          <span class="chip">Hair: Curls & Buns</span>
+          <span class="chip">Skin Preparation</span>
+          <span class="chip">Quick Touch-ups</span>
+          <span class="chip">Color Theory</span>
+          <span class="chip">Hygiene & Sanitation</span>
+          <span class="chip">Moodboard Execution</span>
+        </div>
+      </div>
+
+      <!-- experience -->
+      <div class="section" aria-labelledby="exp-heading">
+        <h3 id="exp-heading" class="section__title">Professional Experience</h3>
+        <div style="font-weight:700; margin-bottom:6px;">Freelance Makeup Artist — Virar, Maharashtra</div>
+        <div style="color:var(--muted); margin-bottom:8px;"><em>2.5 years</em></div>
+        <ul class="clean" aria-hidden="false">
+          <li>Executed bridal looks (soft and traditional) for a wide range of skin tones and cultural styles.</li>
+          <li>Makeup lead for fashion & product shoots, including portfolio work for Myntra and commercial ad shoots.</li>
+          <li>Collaborated with photographers and stylists to match lighting and creative direction; followed moodboards precisely.</li>
+          <li>Performed on-set quick fixes and touch-ups; recommended and used professional-grade products (PAC, Maybelline, Makeup Studio, etc.).</li>
+          <li>Maintained client records and hygiene protocols; built a strong repeat client base from referrals.</li>
+        </ul>
+      </div>
+
+      <!-- portfolio -->
+      <div class="section" aria-labelledby="port-heading">
+        <h3 id="port-heading" class="section__title">Selected Portfolio</h3>
+        <div class="portfolio-grid" role="list">
+          <a class="port-item" href="#" role="listitem" aria-label="Myntra fashion shoot sample">
+            <img src="https://images.unsplash.com/photo-1611599530056-9dbf6d5b35c7?auto=format&fit=crop&w=900&q=80" alt="Myntra Fashion Shoot — makeup by Prithi">
+          </a>
+          <a class="port-item" href="#" role="listitem" aria-label="Tata Play ad shoot sample">
+            <img src="https://images.unsplash.com/photo-1581091215367-4b4fbc933f46?auto=format&fit=crop&w=900&q=80" alt="Tata Play ad shoot — makeup by Prithi">
+          </a>
+          <a class="port-item" href="#" role="listitem" aria-label="Rupesh jewellers shoot sample">
+            <img src="https://images.unsplash.com/photo-1591022919391-22bfa9f57da0?auto=format&fit=crop&w=900&q=80" alt="Rupesh Jewellers shoot — makeup by Prithi">
+          </a>
+          <a class="port-item" href="#" role="listitem" aria-label="Editorial sample">
+            <img src="https://images.unsplash.com/photo-1504890214039-cb06f9b6a1f9?auto=format&fit=crop&w=900&q=80" alt="Editorial makeup sample by Prithi">
+          </a>
+        </div>
+      </div>
+
+      <!-- education -->
+      <div class="section" aria-labelledby="edu-heading">
+        <h3 id="edu-heading" class="section__title">Education & Training</h3>
+        <ul class="clean">
+          <li>12th Grade Completed</li>
+          <li>Professional Makeup Courses — Kapil’s Academy (Bridal & HD Makeup, Soft Glam Techniques, Client Consultation)</li>
+        </ul>
+      </div>
+
+      <!-- languages -->
+      <div class="section" aria-labelledby="lang-heading">
+        <h3 id="lang-heading" class="section__title">Languages</h3>
+        <div class="lang-row" role="list">
+          <div class="lang-pill" role="listitem">Tulu</div>
+          <div class="lang-pill" role="listitem">Kannada</div>
+          <div class="lang-pill" role="listitem">Hindi</div>
+          <div class="lang-pill" role="listitem">English</div>
+          <div class="lang-pill" role="listitem">Marathi</div>
+        </div>
+      </div>
+
+      <!-- professional traits -->
+      <div class="section" aria-labelledby="traits-heading">
+        <h3 id="traits-heading" class="section__title">Professional Traits</h3>
+        <ul class="clean">
+          <li>Calm, friendly, and patient with clients — especially brides.</li>
+          <li>Reliable on-set professional with punctuality and attention to detail.</li>
+          <li>Efficient workflow; excellent time management and quick decision-making for last-minute changes.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <!-- FOOTER (single row across) -->
+    <div class="cv__foot" aria-hidden="false">
+      <div>© Prithi Panthal · Makeup Artist · Available for bookings & shoots</div>
+      <div style="color:var(--muted)">References available on request</div>
+    </div>
+
+  </main>
+
+  <!-- small script: improve keyboard focus for print button -->
+  <script>
+    (function(){
+      var btn = document.querySelector('.btn--print');
+      if(btn){
+        btn.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); btn.click(); }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
